@@ -1,34 +1,20 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
-import { RESTAURANTS_URL, CORSPROXY } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useRestaurant from "../hooks/useRestaurant";
 
 const Main = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const {
+    restaurants,
+    filteredRestaurants,
+    setFilteredRestaurants,
+    setRestaurants,
+  } = useRestaurant();
+
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(CORSPROXY + RESTAURANTS_URL);
-      const jsondata = await response.json();
-
-      const toprestaurants = jsondata?.data?.cards?.find(
-        (card) =>
-          card?.card?.card?.gridElements?.infoWithStyle?.restaurants !==
-          undefined
-      )?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-      /*const restaurants =
-        jsondata?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;*/
-
-      setRestaurants(toprestaurants);
-      setFilteredRestaurants(toprestaurants);
-    }
-    fetchData();
-  }, []);
+  console.log(restaurants);
 
   const handleFilterClick = () => {
     const filteredRestaurants = restaurants.filter(
@@ -49,7 +35,7 @@ const Main = () => {
   }
 
   return (
-    <div className="main">
+    <div className="m-4">
       <div className="filter">
         <div className="search">
           <input

@@ -204,3 +204,59 @@ To work around this we can:
 ## React Life Cycle Method Diagram -
 
 https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+## Chunking/code splitting/dynamic bundling/lazy loading/dynamic imports
+
+logical separation of bundles. on demand loading
+
+const Grocery = React.lazy(()=> import("./components/Grocery"));
+
+Why we got this error : A component suspended while responding to
+synchronous input. This will cause the UI to be replaced with a loading indicator.
+To fix, updates that suspend should be wrapped with startTransition? How does
+suspense fix this error? -- as we are loading the component lazily , React could not find the component and will throw this error. To avoid this , we need to wrap the lazily loading component with Suspense.So that the fallback content will be shown till the time the component is loaded.
+
+## Styling React apps
+
+- CSS
+- SASS adds some superpowers to CSS.
+- Styled components
+- Material UI
+- Bootstrap
+- Chakra UI
+- Ant Design
+- Tailwind CSS
+
+## Tailwind CSS
+
+- Rapidly build modern websites without ever leaving your HTML
+- PostCSS - a tool for transforming CSS with javascript
+- Parcel will use the postcssrc to read the tailwindcss
+- if there is no specific class write it in []. eg: w-[200px]
+- Parcel will include only the required tailwind css in the bundled file
+- Tailwind automatically removes all unused CSS when building for production, which means your final CSS bundle is the smallest it could possibly be.
+
+## Higher order components
+
+const withPromotedLabel = (RestaurantCard) => {
+
+    return (props) => {
+        return (
+            <div>
+              <label>Promoted</label>
+              <RestaurantCard {...props}/>
+            </div>
+        )
+    }
+
+}
+const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+## Redux Toolkit
+
+- npm install @reduxjs/toolkit react-redux
+- Build our store
+- Connect our store to the app.
+- Slice (cartSlice)
+- Dispatch an action
+- Read the data using Selector

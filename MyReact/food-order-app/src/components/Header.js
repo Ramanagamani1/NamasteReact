@@ -1,37 +1,37 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import foodLogo from "../../logo.jpg";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
-
-  useEffect(() => {
-    //console.log("Header rendered");
-  }, []);
+  const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={foodLogo} />
+    <div className="flex justify-between shadow-lg p-3">
+      <div className="flex gap-5">
+        <Link to="/">
+          <img className="w-28" src={foodLogo} />
+        </Link>
+        <button>Visakhapatnam, Andhra Pradesh, India</button>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+
+      <div className="flex items-center">
+        <ul className="flex items-center p-4 gap-16">
+          <li className="font-semibold">
+            Online: {onlineStatus ? "✅" : "🔴"}
+          </li>
+          <li className="font-semibold">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="font-semibold">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="font-semibold">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="font-semibold">
             <Link to="/cart">Cart</Link>
-          </li>
-          <li>
-            <button className="login" onClick={() => setIsLogin(!isLogin)}>
-              {isLogin ? "Logout" : "Login"}
-            </button>
           </li>
         </ul>
       </div>

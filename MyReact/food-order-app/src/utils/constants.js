@@ -9,3 +9,9 @@ export const RESTAURANTS_URL =
 export const MENU_URL =
   CORSPROXY +
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.702126&lng=83.154487&restaurantId=";
+
+export const LOCATION_URL =
+  CORSPROXY + "https://www.swiggy.com/dapi/misc/place-autocomplete?input=";
+
+export const ADDRESS_URL =
+  CORSPROXY + "https://www.swiggy.com/dapi/misc/address-recommend?place_id=";
