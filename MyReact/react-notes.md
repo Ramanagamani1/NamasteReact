@@ -260,3 +260,25 @@ const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 - Slice (cartSlice)
 - Dispatch an action
 - Read the data using Selector
+
+## Testing
+
+- types of testing (developer can do):
+- Unit testing - test your component in isolation
+- Integration testing
+- End to End testing (E2E testing)
+- React testing library builds on top of DOM Testing Library
+- React testing library uses jest (a javascript testing library)
+
+### Setting up testing in our app
+- install react testing library
+- install jest
+- install babel dependencies for jest with babel
+- babel.config.js (parcel already uses babel behind the scenes.)
+- configure parcel config file to disable default babel transpilation
+- JSDOM is a library which parses and interacts with assembled html, just like a browser.
+- install jsdom library
+- install @babel/preset-react - to make jsx work in test cases
+- include @babel/preset-react inside my babel config
+- install @testing-library/jest-dom
+- __tests__ = these are called dunder __ __

@@ -1,21 +1,37 @@
 import { CDN_URL } from "../utils/constants";
+import starIcon from "./../images/star-icon.png";
 
 const RestaurantCard = ({ restaurant }) => {
-  const { name, cuisines, sla, avgRating, cloudinaryImageId, costForTwo } =
-    restaurant.info;
+  const {
+    name,
+    cuisines,
+    sla: { slaString },
+    avgRating,
+    cloudinaryImageId,
+    areaName,
+  } = restaurant.info;
+
+  console.log(restaurant);
 
   return (
-    <div className="restaurant-card">
+    <div className="w-[330px] flex-shrink-0">
       <img
-        className="restaurant-image"
         src={`${CDN_URL}${cloudinaryImageId}`}
-        alt="food"
+        className="w-[300px] h-[180px] object-cover rounded-3xl"
       />
-      <h3>{name}</h3>
-      <h4>{cuisines?.join(", ")}</h4>
-      <h4>Rating: {avgRating}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>Delivery Time:{sla?.slaString}</h4>
+      <div className="flex flex-col gap-1">
+        <h3 className="mx-4 mt-2 text-lg font-bold text-black">{name}</h3>
+        <div className="mx-4">
+          <img src={starIcon} alt="star-rating-icon" className="inline mr-1" />
+          <span className="mr-1 text-base font-medium">
+            {avgRating} • {slaString}
+          </span>
+        </div>
+        <div className="mx-4 text-gray-700">
+          {cuisines.splice(0,3).join(", ")}
+        </div>
+        <div className="mx-4 text-gray-700">{areaName}</div>
+      </div>
     </div>
   );
 };

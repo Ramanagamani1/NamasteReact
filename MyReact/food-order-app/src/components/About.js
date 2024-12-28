@@ -1,33 +1,18 @@
-import React from "react";
-import UserClass from "./UserClass";
+import logo from "../images/logo.jpg";
 
-class About extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("Parent constructor");
-  }
-
-  componentDidMount() {
-    console.log("Parent component did mount");
-  }
-
-  render() {
-    console.log("Parent render");
-    return (
-      <div>
-        <h1>About</h1>
-        <UserClass />
-        {/* <UserClass name="Mani" />
-        <UserClass name="Sravani" /> */}
+export default function About() {
+  return (
+    <>
+      <div className="flex gap-10 m-10">
+        <img className="" src={logo} />
+        <div className="my-10">
+          <h2 className="py-10 text-3xl font-bold tracking-wide">Food Explorer 🍽🍟🍕🍔🍗</h2>
+          <p className="text-xl">
+            Food Explorer is a place where you can explore different restaurants
+            and can order anything, anytime you desire.
+          </p>
+        </div>
       </div>
-    );
-  }
+    </>
+  );
 }
-
-export default About;
-
-/*
-
-
-
-*/
